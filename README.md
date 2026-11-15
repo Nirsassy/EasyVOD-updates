@@ -1,40 +1,46 @@
+<div dir="rtl">
+
 # EasyVOD
 
-Israeli TV, on-demand programs, radio and podcasts for Android phones, tablets and Android TV.
+[English version](README.en.md)
 
-## Download
+טלוויזיה ישראלית, תוכניות לצפייה לפי דרישה, רדיו ופודקאסטים לטלפונים ולטאבלטים עם Android ולטלוויזיות Android TV.
 
-[Download the latest EasyVOD APK](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/EasyVOD.apk).
+## הורדה
 
-This permanent link always downloads the latest release. See the [release notes](https://github.com/Nirsassy/EasyVOD-updates/releases/latest) for what changed.
+[הורדת הגרסה העדכנית של EasyVOD](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/EasyVOD.apk).
 
-## Install on Android TV / Google TV
+הקישור הקבוע מוריד תמיד את הגרסה העדכנית. פירוט השינויים מופיע ב[הערות הגרסה](https://github.com/Nirsassy/EasyVOD-updates/releases/latest).
 
-**Downloader code: `7197499`**
+## התקנה על Android TV או Google TV
 
-1. On your TV, open the **Google Play Store**, search for **Downloader by AFTVnews** and select **Install**. [Downloader on Google Play](https://play.google.com/store/apps/details?id=com.esaba.downloader).
-2. Open **Downloader** and select **Home**.
-3. Enter **`7197499`** in the URL/search/code field and select **Go**.
-4. Wait for the EasyVOD APK to download, then select **Install**.
-5. If Android blocks installation, select **Settings**, allow **Downloader** to **install unknown apps** (or enable it under **Unknown sources**), then return and select **Install** again. Menu names vary by TV.
-6. Open **EasyVOD** from your TV's apps list.
+**הקוד ב־Downloader: `7197499`**
 
-This code downloads the latest EasyVOD version. Future updates are available inside EasyVOD.
+1. פתחו בטלוויזיה את **Google Play Store**, חפשו **Downloader by AFTVnews** ובחרו **התקנה / Install**. [Downloader ב־Google Play](https://play.google.com/store/apps/details?id=com.esaba.downloader).
+2. פתחו את **Downloader** ובחרו **Home**.
+3. הזינו **`7197499`** בשדה הכתובת, החיפוש או הקוד ולחצו על **Go**.
+4. המתינו להורדת קובץ ההתקנה של EasyVOD ובחרו **התקנה / Install**.
+5. אם Android חוסם את ההתקנה, בחרו **הגדרות / Settings**, אפשרו ל־**Downloader** **התקנת אפליקציות לא מוכרות / Install unknown apps** או הפעילו אותו תחת **מקורות לא ידועים / Unknown sources**. חזרו להתקנה ובחרו שוב **Install**. שמות התפריטים משתנים בין טלוויזיות.
+6. פתחו את **EasyVOD** מתוך רשימת האפליקציות בטלוויזיה.
 
-## Install or update
+הקוד מוריד את הגרסה העדכנית של EasyVOD. עדכונים עתידיים זמינים מתוך האפליקציה.
 
-1. Open the downloaded APK on your Android device.
-2. If prompted, allow installation from the app opening the file.
-3. Confirm **Install** or **Update** in Android.
+## התקנה או עדכון במכשיר Android
 
-Install updates over the existing app to retain your favorites, viewing history and settings.
+1. פתחו את קובץ ה־APK שהורדתם במכשיר.
+2. אם תתבקשו, אפשרו התקנה מהאפליקציה שפתחה את הקובץ.
+3. אשרו **התקנה** או **עדכון** במסך ההתקנה של Android.
 
-## Updates inside EasyVOD
+התקינו עדכונים מעל האפליקציה הקיימת כדי לשמור על המועדפים, היסטוריית הצפייה וההגדרות.
 
-Starting with version **0.17.0**, EasyVOD checks for new versions while browsing and offers to download an update inside the app. Android asks you to confirm installation. You can also check manually under **Settings → Help & About → בדיקת עדכונים**.
+## עדכונים מתוך EasyVOD
 
-If you use an older version, install 0.17.0 or newer once to enable future in-app updates.
+החל מגרסה **0.17.0**, EasyVOD בודקת אם קיימת גרסה חדשה בזמן הגלישה באפליקציה ומציעה להוריד אותה. Android מבקשת את אישורכם להתקנה. אפשר לבדוק ידנית דרך **הגדרות ← עזרה ואודות ← בדיקת עדכונים**.
 
-## Update information
+אם מותקנת אצלכם גרסה ישנה יותר, התקינו פעם אחת את גרסה 0.17.0 או גרסה חדשה יותר כדי להפעיל את העדכונים מתוך האפליקציה.
 
-The app reads [latest.json](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/latest.json) from the latest release. Each release includes a versioned APK, an identical `EasyVOD.apk` download and update information.
+## מידע על עדכונים
+
+האפליקציה קוראת את [latest.json](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/latest.json) מהגרסה העדכנית. כל גרסה כוללת קובץ APK עם מספר גרסה, עותק זהה בשם `EasyVOD.apk` ומידע על העדכון.
+
+</div>
