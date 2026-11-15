@@ -33,9 +33,13 @@ Install updates over the existing app to retain your favorites, viewing history 
 
 ## Updates inside EasyVOD
 
-Starting with version **0.17.0**, EasyVOD checks for new versions while browsing and offers to download an update inside the app. Android asks you to confirm installation. You can also check manually under **Settings → Help & About → בדיקת עדכונים**.
+Starting with version **0.17.0**, EasyVOD checks for new versions while browsing and offers to download an update inside the app. Android asks you to confirm installation. You can also check manually under **Settings → Help and about → Check for updates**.
 
 If you use an older version, install 0.17.0 or newer once to enable future in-app updates.
+
+## Interface language
+
+Starting with version **0.18.0**, choose Hebrew or English under **Settings → Home and display → Language**. Hebrew is the default. In the Hebrew interface, look for **הגדרות ← מסך הבית ותצוגה ← שפה / Language**. Your choice is saved on the device, and the interface direction follows the selected language. Program titles and descriptions from content providers stay in their original language.
 
 ## Update information
 
