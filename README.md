@@ -8,15 +8,18 @@ Israeli TV, on-demand programs, radio and podcasts for Android phones, tablets a
 
 This permanent link always downloads the latest release. See the [release notes](https://github.com/Nirsassy/EasyVOD-updates/releases/latest) for what changed.
 
-## Android TV with Downloader
+## Install on Android TV / Google TV
 
-In Downloader, paste this address into the URL field and select **Go**:
+**Downloader code: `7197499`**
 
-```text
-https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/EasyVOD.apk
-```
+1. On your TV, open the **Google Play Store**, search for **Downloader by AFTVnews** and select **Install**. [Downloader on Google Play](https://play.google.com/store/apps/details?id=com.esaba.downloader).
+2. Open **Downloader** and select **Home**.
+3. Enter **`7197499`** in the URL/search/code field and select **Go**.
+4. Wait for the EasyVOD APK to download, then select **Install**.
+5. If Android blocks installation, select **Settings**, allow **Downloader** to **install unknown apps** (or enable it under **Unknown sources**), then return and select **Install** again. Menu names vary by TV.
+6. Open **EasyVOD** from your TV's apps list.
 
-After the download finishes, select **Install**. If Android asks, allow installation from Downloader and confirm the installation.
+This code downloads the latest EasyVOD version. Future updates are available inside EasyVOD.
 
 ## Install or update
 
