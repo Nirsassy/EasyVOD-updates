@@ -6,6 +6,8 @@
 
 טלוויזיה ישראלית, תוכניות לצפייה לפי דרישה, רדיו ופודקאסטים לטלפונים ולטאבלטים עם Android ולטלוויזיות Android TV.
 
+📣 [ערוץ EasyVOD ב־Telegram](https://t.me/EasyVOD) — גרסאות חדשות, פירוט השינויים והוראות התקנה בהודעה הנעוצה.
+
 ## הורדה
 
 [הורדת הגרסה העדכנית של EasyVOD](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/EasyVOD.apk).

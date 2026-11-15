@@ -4,6 +4,8 @@
 
 Israeli TV, on-demand programs, radio and podcasts for Android phones, tablets and Android TV.
 
+📣 [EasyVOD on Telegram](https://t.me/EasyVOD) — new releases, changes and a pinned installation guide.
+
 ## Download
 
 [Download the latest EasyVOD APK](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/EasyVOD.apk).

@@ -1,0 +1,54 @@
+name: EasyVOD Telegram announcements
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Stable version tag, for example v0.18.4; leave empty for latest'
+        required: false
+        type: string
+  push:
+    branches: [main]
+    paths: ['automation/telegram/**', '.github/workflows/telegram.yml']
+  pull_request:
+    paths: ['automation/telegram/**', '.github/workflows/telegram.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: easyvod-telegram-channel
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Check publisher behavior
+        run: python3 -m unittest discover -s automation/telegram -p 'test_*.py' -v
+
+  announce:
+    needs: test
+    if: >-
+      github.repository == 'Nirsassy/EasyVOD-updates' &&
+      (github.event_name == 'release' || github.event_name == 'workflow_dispatch') &&
+      (github.event_name != 'release' || !github.event.release.prerelease)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Announce verified release and refresh welcome
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          REQUESTED_TAG: ${{ inputs.tag }}
+        run: python3 automation/telegram/publish.py
