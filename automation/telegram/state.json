@@ -3,10 +3,11 @@
   "channel_id": -1004460240173,
   "releases": {
     "v0.18.4": {
-      "status": "pending",
+      "status": "sent",
       "release_id": 446324419,
       "version_code": 37,
-      "reserved_at": "2026-11-15T22:52:30.041963+00:00"
+      "reserved_at": "2026-11-15T22:52:30.041963+00:00",
+      "message_id": 6
     }
   }
 }
