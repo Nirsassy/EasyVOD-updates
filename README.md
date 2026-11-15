@@ -4,7 +4,19 @@ Israeli TV, on-demand programs, radio and podcasts for Android phones, tablets a
 
 ## Download
 
-Open the [latest release](https://github.com/Nirsassy/EasyVOD-updates/releases/latest) and download its **EasyVOD APK**. Release notes describe what changed.
+[Download the latest EasyVOD APK](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/EasyVOD.apk).
+
+This permanent link always downloads the latest release. See the [release notes](https://github.com/Nirsassy/EasyVOD-updates/releases/latest) for what changed.
+
+## Android TV with Downloader
+
+In Downloader, paste this address into the URL field and select **Go**:
+
+```text
+https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/EasyVOD.apk
+```
+
+After the download finishes, select **Install**. If Android asks, allow installation from Downloader and confirm the installation.
 
 ## Install or update
 
@@ -22,4 +34,4 @@ If you use an older version, install 0.17.0 or newer once to enable future in-ap
 
 ## Update information
 
-The app reads [latest.json](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/latest.json) from the latest release. Each release includes its APK and update information.
+The app reads [latest.json](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/latest.json) from the latest release. Each release includes a versioned APK, an identical `EasyVOD.apk` download and update information.
