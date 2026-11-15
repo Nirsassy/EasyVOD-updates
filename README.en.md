@@ -35,11 +35,15 @@ Install updates over the existing app to retain your favorites, viewing history 
 
 Starting with version **0.17.0**, EasyVOD checks for new versions while browsing and offers to download an update inside the app. Android asks you to confirm installation. You can also check manually under **Settings → Help and about → Check for updates**.
 
-If Android's update confirmation returns to EasyVOD without completing installation, download the APK above and install it over your existing app once. Version **0.18.1** fixes this issue. Keep the existing app installed to preserve your data. Versions older than 0.17.0 also need a one-time manual update.
+If the app cannot open, or Android's update confirmation returns to EasyVOD without completing installation, download the APK above and install it over your existing app once. Version **0.18.2** includes the startup and update approval repairs. Keep the app and its data installed. Versions older than 0.17.0 also need a one-time manual update.
 
 ## Interface language
 
 Starting with version **0.18.0**, choose Hebrew or English under **Settings → Home and display → Language**. Hebrew is the default. In the Hebrew interface, look for **הגדרות ← מסך הבית ותצוגה ← שפה / Language**. Your choice is saved on the device, and the interface direction follows the selected language. Program titles and descriptions from content providers stay in their original language.
+
+## Diagnostic log
+
+Starting with **0.18.2**, you can export logs even if the main screen cannot open: long-press the EasyVOD icon on your phone and choose **Diagnostic log / יומן אבחון**. The independent diagnostic screen can save or share the report. This shortcut requires a supporting launcher on Android 7.1 or newer.
 
 ## Update information
 
