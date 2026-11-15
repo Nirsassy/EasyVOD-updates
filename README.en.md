@@ -35,7 +35,7 @@ Install updates over the existing app to retain your favorites, viewing history 
 
 Starting with version **0.17.0**, EasyVOD checks for new versions while browsing and offers to download an update inside the app. Android asks you to confirm installation. You can also check manually under **Settings → Help and about → Check for updates**.
 
-If you use an older version, install 0.17.0 or newer once to enable future in-app updates.
+If Android's update confirmation returns to EasyVOD without completing installation, download the APK above and install it over your existing app once. Version **0.18.1** fixes this issue. Keep the existing app installed to preserve your data. Versions older than 0.17.0 also need a one-time manual update.
 
 ## Interface language
 
