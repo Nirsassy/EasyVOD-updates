@@ -17,10 +17,11 @@
       "message_id": 7
     },
     "v0.18.6": {
-      "status": "pending",
+      "status": "sent",
       "release_id": 450096444,
       "version_code": 39,
-      "reserved_at": "2026-11-18T14:25:37.248906+00:00"
+      "reserved_at": "2026-11-18T14:25:37.248906+00:00",
+      "message_id": 8
     }
   }
 }
