@@ -26,11 +26,11 @@ delete messages, ban users, invite people, change the channel or add admins.
 2. Check `latest.json`, its application/version and exact APK URL.
 3. Download both APK assets and verify their sizes and SHA-256 hashes.
 4. Reserve the announcement in `state.json` using GitHub's content SHA as a lease.
-5. Post Hebrew release notes with an APK download button and installation link.
+5. Post the separate one-line Hebrew summary (`notesTelegram`, up to 240 characters) with APK, installation and release details buttons. The release details button opens the full changelog on GitHub. Older releases without a summary display the title and buttons.
 6. Save the Telegram message ID, update the welcome post's version, and keep it pinned.
 
 The welcome post covers Android installation, Android TV / Google TV setup using
-Downloader code **7197499**, in-app updates, English instructions and support.
+Downloader code **9977511**, in-app updates, English instructions and support.
 The download link always points to the latest stable APK. Announcement buttons
 point to their own immutable versioned APK.
 
@@ -39,7 +39,7 @@ point to their own immutable versioned APK.
 ```bash
 python3 -m unittest discover -s automation/telegram -p 'test_*.py' -v
 python3 automation/telegram/publish.py --tag v0.18.4 --dry-run
-gh workflow run telegram.yml --repo Nirsassy/EasyVOD-updates -f tag=v0.18.4
+gh workflow run telegram.yml --repo nirz8/EasyVOD-updates -f tag=v0.18.4
 ```
 
 The dry run verifies GitHub assets and renders the messages without contacting

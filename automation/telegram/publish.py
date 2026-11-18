@@ -14,7 +14,10 @@ import tempfile
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
-from content import CHANNEL_ID, CHANNEL_USERNAME, BOT_USERNAME, REPOSITORY, announcement, welcome
+from content import (
+    BOT_USERNAME, CHANNEL_ID, CHANNEL_USERNAME, MAX_TELEGRAM_NOTES, PREVIOUS_REPOSITORY,
+    REPOSITORY, announcement, apk_url, welcome,
+)
 
 ROOT = Path(__file__).resolve().parent
 STATE_PATH = "automation/telegram/state.json"
@@ -49,11 +52,15 @@ def validate_manifest(manifest, release, directory):
         raise PublicationError("Invalid Android version requirement.")
     if release.get("draft") or release.get("prerelease") or release.get("tag_name") != "v" + version:
         raise PublicationError("Only the matching published stable release may be announced.")
-    expected = f"https://github.com/{REPOSITORY}/releases/download/v{version}/EasyVOD-{version}.apk"
-    if manifest.get("apkUrl") != expected:
+    expected = (apk_url(REPOSITORY, version), apk_url(PREVIOUS_REPOSITORY, version))
+    if manifest.get("apkUrl") not in expected:
         raise PublicationError("APK link does not belong to this EasyVOD release.")
     if not isinstance(manifest.get("notes"), str) or len(manifest["notes"]) > 4000:
         raise PublicationError("Invalid release notes.")
+    if "notesTelegram" in manifest:
+        summary = manifest["notesTelegram"]
+        if not isinstance(summary, str) or not 1 <= len(summary.strip()) <= MAX_TELEGRAM_NOTES or len(summary.splitlines()) != 1:
+            raise PublicationError("Telegram summary must be one non-empty line of up to 240 characters.")
     if type(manifest.get("sizeBytes")) is not int or not 1 <= manifest["sizeBytes"] <= MAX_APK_SIZE:
         raise PublicationError("Invalid APK size.")
     digest = manifest.get("sha256", "")

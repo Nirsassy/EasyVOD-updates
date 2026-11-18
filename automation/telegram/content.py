@@ -1,20 +1,27 @@
 """Public EasyVOD channel text and deterministic release-message rendering."""
 from html import escape
 
-REPOSITORY = "Nirsassy/EasyVOD-updates"
+REPOSITORY = "nirz8/EasyVOD-updates"
+PREVIOUS_REPOSITORY = "Nirsassy/EasyVOD-updates"
 CHANNEL_ID = -1004460240173
 CHANNEL_USERNAME = "EasyVOD"
 BOT_USERNAME = "EasyVODUpdatesBot"
 DOWNLOAD = f"https://github.com/{REPOSITORY}/releases/latest/download/EasyVOD.apk"
 GUIDE = f"https://github.com/{REPOSITORY}"
 ENGLISH = f"https://github.com/{REPOSITORY}/blob/main/README.en.md"
+DOWNLOADER_CODE = "9977511"
+MAX_TELEGRAM_NOTES = 240
 CHANNEL_TITLE = "EasyVOD | עדכונים והורדות"
 CHANNEL_DESCRIPTION = (
     "🎬 טלוויזיה ישראלית, תוכניות, רדיו ופודקאסטים באפליקציה אחת ל־Android ול־Android TV.\n"
     "📲 הורדה והוראות התקנה בהודעה הנעוצה.\n"
-    "📺 קוד Downloader: 7197499\n"
-    "🌐 tinyurl.com/EasyVOD"
+    f"📺 קוד Downloader: {DOWNLOADER_CODE}\n"
+    f"🌐 {DOWNLOAD}"
 )
+
+
+def apk_url(repository, version):
+    return f"https://github.com/{repository}/releases/download/v{version}/EasyVOD-{version}.apk"
 
 
 def welcome(manifest):
@@ -30,7 +37,7 @@ def welcome(manifest):
         "אם Android מבקשת זאת, אפשרו התקנה מהאפליקציה שפתחה את הקובץ.\n\n"
         "<b>📺 התקנה בטלוויזיה</b>\n"
         "1. חפשו ב־Google Play את <b>Downloader by AFTVnews</b> והתקינו.\n"
-        "2. פתחו את Downloader והזינו את הקוד <code>7197499</code>.\n"
+        f"2. פתחו את Downloader והזינו את הקוד <code>{DOWNLOADER_CODE}</code>.\n"
         "3. בחרו Go, המתינו להורדה ואשרו Install. "
         "אם תתבקשו, אפשרו התקנה מ־Downloader בהגדרות הטלוויזיה.\n\n"
         "<b>🔄 כבר התקנתם?</b>\n"
@@ -51,16 +58,14 @@ def welcome(manifest):
 
 
 def announcement(manifest, welcome_id):
-    notes = manifest["notes"].strip()
-    if len(notes) > 2000:
-        notes = notes[:1999].rstrip() + "…"
     version = escape(manifest["versionName"])
-    text = f"🚀 <b>EasyVOD {version} זמינה להורדה</b>\n\n"
-    text += "<b>מה חדש?</b>\n" + escape(notes or "שיפורים ותיקונים לחוויית הצפייה.")
-    text += "\n\n🔄 אפשר לעדכן מתוך האפליקציה או להוריד מהכפתור למטה. התקינו מעל הגרסה הקיימת כדי לשמור על הנתונים."
+    text = f"🚀 <b>EasyVOD {version} זמינה להורדה</b>"
+    summary = manifest.get("notesTelegram")
+    if summary:
+        text += "\n\n" + escape(summary.strip())
     return {"text": text, "parse_mode": "HTML", "link_preview_options": {"is_disabled": True},
             "reply_markup": {"inline_keyboard": [
-                [{"text": "📲 הורדת העדכון", "url": manifest["apkUrl"]}],
+                [{"text": "📲 הורדת העדכון", "url": apk_url(REPOSITORY, manifest["versionName"])}],
                 [{"text": "📌 התקנה ועזרה", "url": f"https://t.me/{CHANNEL_USERNAME}/{welcome_id}"},
                  {"text": "📋 פרטי הגרסה", "url": f"https://github.com/{REPOSITORY}/releases/tag/v{manifest['versionName']}"}],
             ]}}

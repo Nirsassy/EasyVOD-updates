@@ -8,17 +8,17 @@ Israeli TV, on-demand programs, radio and podcasts for Android phones, tablets a
 
 ## Download
 
-[Download the latest EasyVOD APK](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/EasyVOD.apk).
+[Download the latest EasyVOD APK](https://github.com/nirz8/EasyVOD-updates/releases/latest/download/EasyVOD.apk).
 
-This permanent link always downloads the latest release. See the [release notes](https://github.com/Nirsassy/EasyVOD-updates/releases/latest) for what changed.
+This permanent link always downloads the latest release. See the [release notes](https://github.com/nirz8/EasyVOD-updates/releases/latest) for what changed.
 
 ## Install on Android TV / Google TV
 
-**Downloader code: `7197499`**
+**Downloader code: `9977511`**
 
 1. On your TV, open the **Google Play Store**, search for **Downloader by AFTVnews** and select **Install**. [Downloader on Google Play](https://play.google.com/store/apps/details?id=com.esaba.downloader).
 2. Open **Downloader** and select **Home**.
-3. Enter **`7197499`** in the URL/search/code field and select **Go**.
+3. Enter **`9977511`** in the URL/search/code field and select **Go**.
 4. Wait for the EasyVOD APK to download, then select **Install**.
 5. If Android blocks installation, select **Settings**, allow **Downloader** to **install unknown apps** (or enable it under **Unknown sources**), then return and select **Install** again. Menu names vary by TV.
 6. Open **EasyVOD** from your TV's apps list.
@@ -49,4 +49,4 @@ Starting with **0.18.2**, you can export logs even if the main screen cannot ope
 
 ## Update information
 
-The app reads [latest.json](https://github.com/Nirsassy/EasyVOD-updates/releases/latest/download/latest.json) from the latest release. Each release includes a versioned APK, an identical `EasyVOD.apk` download and update information.
+The app reads [latest.json](https://github.com/nirz8/EasyVOD-updates/releases/latest/download/latest.json) from the latest release. Each release includes a versioned APK, an identical `EasyVOD.apk` download and update information.

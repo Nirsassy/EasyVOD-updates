@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from content import CHANNEL_ID, CHANNEL_DESCRIPTION, announcement, welcome
+from content import CHANNEL_ID, CHANNEL_DESCRIPTION, DOWNLOAD, announcement, welcome
 from publish import PublicationError, State, Telegram, publish_verified, validate_manifest
 
 
@@ -20,8 +20,9 @@ class Fixture(unittest.TestCase):
             (self.root / name).write_bytes(payload)
         self.manifest = {'schema': 1, 'applicationId': 'il.idanplus', 'versionName': '1.2.3',
             'versionCode': 123, 'minSdk': 23, 'sizeBytes': len(payload),
-            'sha256': hashlib.sha256(payload).hexdigest(), 'notes': 'תיקוני צפייה <script>&',
-            'apkUrl': 'https://github.com/Nirsassy/EasyVOD-updates/releases/download/v1.2.3/EasyVOD-1.2.3.apk'}
+            'sha256': hashlib.sha256(payload).hexdigest(), 'notes': 'פירוט מלא של השינויים',
+            'notesTelegram': 'תיקוני צפייה <script>&',
+            'apkUrl': 'https://github.com/nirz8/EasyVOD-updates/releases/download/v1.2.3/EasyVOD-1.2.3.apk'}
         self.release = {'id': 7, 'tag_name': 'v1.2.3', 'draft': False, 'prerelease': False,
             'assets': [{'name': name, 'state': 'uploaded', 'size': len(payload)} for name in ('EasyVOD-1.2.3.apk', 'EasyVOD.apk')]}
 
@@ -29,6 +30,12 @@ class Fixture(unittest.TestCase):
 class ReleaseValidation(Fixture):
     def test_both_published_apks_are_verified(self):
         validate_manifest(self.manifest, self.release, self.root)
+
+    def test_legacy_manifest_links_render_with_current_owner(self):
+        legacy = dict(self.manifest, apkUrl=self.manifest['apkUrl'].replace('/nirz8/', '/Nirsassy/'))
+        validate_manifest(legacy, self.release, self.root)
+        message = announcement(legacy, 42)
+        self.assertEqual(self.manifest['apkUrl'], message['reply_markup']['inline_keyboard'][0][0]['url'])
 
     def test_corrupted_downloader_alias_blocks_publication(self):
         (self.root / 'EasyVOD.apk').write_bytes(b'wrong APK')
@@ -46,20 +53,31 @@ class ReleaseValidation(Fixture):
             with self.subTest(changes=changes), self.assertRaises(PublicationError):
                 validate_manifest(self.manifest, dict(self.release, **changes), self.root)
 
-    def test_notes_are_escaped_and_bounded(self):
+    def test_announcement_uses_only_the_separate_summary(self):
         message = announcement(self.manifest, 42)
         self.assertNotIn('<script>', message['text'])
         self.assertIn('&lt;script&gt;&amp;', message['text'])
-        message = announcement(dict(self.manifest, notes='&' * 4000), 42)
-        self.assertLess(len(message['text'].replace('&amp;', '&')), 4096)
+        self.assertNotIn(self.manifest['notes'], message['text'])
         self.assertEqual(self.manifest['apkUrl'], message['reply_markup']['inline_keyboard'][0][0]['url'])
+        self.assertEqual('https://github.com/nirz8/EasyVOD-updates/releases/tag/v1.2.3',
+                         message['reply_markup']['inline_keyboard'][1][1]['url'])
+
+    def test_absent_summary_leaves_title_and_invalid_summary_is_rejected(self):
+        legacy = dict(self.manifest)
+        del legacy['notesTelegram']
+        validate_manifest(legacy, self.release, self.root)
+        self.assertEqual('🚀 <b>EasyVOD 1.2.3 זמינה להורדה</b>', announcement(legacy, 42)['text'])
+        for invalid in (None, '', ' ', 'x' * 241, 'line one\nline two'):
+            with self.subTest(invalid=invalid), self.assertRaises(PublicationError):
+                validate_manifest(dict(self.manifest, notesTelegram=invalid), self.release, self.root)
 
     def test_landing_contains_current_version_and_tv_installation(self):
         message = welcome(self.manifest)
-        for text in ('1.2.3', '7197499', 'Downloader by AFTVnews', 'English', 'אין צורך להסיר'):
+        for text in ('1.2.3', '9977511', 'Downloader by AFTVnews', 'English', 'אין צורך להסיר'):
             self.assertIn(text, message['text'])
         self.assertLess(len(message['text']), 4096)
         self.assertLessEqual(len(CHANNEL_DESCRIPTION), 255)
+        self.assertTrue(CHANNEL_DESCRIPTION.endswith(DOWNLOAD))
 
 
 class FakeStore:

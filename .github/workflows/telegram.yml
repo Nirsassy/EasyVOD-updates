@@ -35,7 +35,7 @@ jobs:
   announce:
     needs: test
     if: >-
-      github.repository == 'Nirsassy/EasyVOD-updates' &&
+      github.repository == 'nirz8/EasyVOD-updates' &&
       (github.event_name == 'release' || github.event_name == 'workflow_dispatch') &&
       (github.event_name != 'release' || !github.event.release.prerelease)
     runs-on: ubuntu-latest
