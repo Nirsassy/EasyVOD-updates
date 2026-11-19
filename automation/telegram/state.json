@@ -38,10 +38,11 @@
       "message_id": 11
     },
     "v0.18.9": {
-      "status": "pending",
+      "status": "sent",
       "release_id": 451819387,
       "version_code": 42,
-      "reserved_at": "2026-11-19T19:21:39.051456+00:00"
+      "reserved_at": "2026-11-19T19:21:39.051456+00:00",
+      "message_id": 12
     }
   }
 }
